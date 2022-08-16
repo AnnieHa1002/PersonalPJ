@@ -1,11 +1,12 @@
 package com.personal.project.model;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
+@Getter
+@Entity
 @NoArgsConstructor
 public class Players {
     @GeneratedValue
@@ -19,8 +20,15 @@ public class Players {
     private String info;
 
     @OneToOne
-    private Jobs jobs;
+    private Jobs jobs;//왜 안되는 지 알아보자// 반대로 생각하라
 
+    public Players (String name, int age, String info, Jobs jobs) {
+        this.id=getId();
+        this.name = name;
+        this.age=age;
+        this.info =info;
+        this.jobs= jobs;
+    }
 
 
 }
